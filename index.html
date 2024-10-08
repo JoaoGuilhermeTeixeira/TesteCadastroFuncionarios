@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Funcionário</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style> 
+
+    body { 
+      background-color: #353535;  
+      color: #fff;
+    }
+    .form-control {
+      background-color: #474747;
+      color: #ffffff;
+    }
+    .form-select {
+      background-color: #494949;
+      color: #fff;
+    }
+    .btn-success {
+      background-color: #28a745;
+      border: none;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>Cadastro de Funcionário</h1>
+
+    <form id="cadastroForm" action="index.php" method="POST">
+    
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="Nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="Nome" name="Nome" required>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <label for="Sobrenome" class="form-label">Sobrenome</label>
+          <input type="text" class="form-control" id="Sobrenome" name="Sobrenome" required>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <label for="Idade" class="form-label">Idade</label>
+          <input type="number" class="form-control" id="Idade" name="Idade" required>
+        </div>
+
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4 mb-3">
+          <label for="Celular" class="form-label">Celular</label>
+          <input type="text" class="form-control" id="Celular" name="Celular" placeholder="(XX) XXXXX-XXXX" required>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <label for="Principal" class="form-label">Principal</label>
+          <select class="form-select" id="Principal" name="Principal" required>
+            <option value="" selected>Selecione</option>
+            <option value="1">Sim</option>
+            <option value="2">Não</option>
+          </select>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <label for="WhatsApp" class="form-label">WhatsApp</label>
+          <select class="form-select" id="WhatsApp" name="WhatsApp" required>
+            <option value="" selected>Selecione</option>
+            <option value="1">Sim</option>
+            <option value="2">Não</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="Email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="Email" name="Email" placeholder="email@exemplo.com" required>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <label for="Corporativo" class="form-label">Corporativo</label>
+          <select class="form-select" id="Corporativo" name="Corporativo" required>
+            <option value="" selected>Selecione</option>
+            <option value="1">Sim</option>
+            <option value="2">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+  </div>
+
+  <script> //Jquery para a Validação
+    $(document).ready(function() {
+      
+      $('#cadastroForm').validate({
+        errorClass: 'is-invalid', 
+        validClass: 'is-valid', 
+        highlight: function(element) {
+          $(element).addClass('is-invalid').removeClass('is-valid');
+        },
+        unhighlight: function(element) {
+          $(element).removeClass('is-invalid').addClass('is-valid');
+        },
+        submitHandler: function(form) {
+         
+          alert('Formulário enviado com sucesso!');
+          form.submit(); 
+        },
+        rules: { //validação
+          Nome: { required: true },
+          Sobrenome: { required: true },
+          Idade: { required: true },
+          Celular: { required: true },
+          Principal: { required: true },
+          WhatsApp: { required: true },
+          Email: { required: true, email: true },
+          Corporativo: { required: true }
+        },
+      });
+    });
+  </script>
+</body>
+</html>
